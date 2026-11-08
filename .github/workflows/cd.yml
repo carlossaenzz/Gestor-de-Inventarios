@@ -1,0 +1,68 @@
+
+# Flujo de entrega continua del CRUD de Inventario
+name: Entrega continua
+
+# Permite iniciar la publicacion manualmente
+on:
+  workflow_dispatch:
+
+# Evita ejecutar dos publicaciones simultaneas
+concurrency:
+  group: github-pages
+  cancel-in-progress: false
+
+jobs:
+  # Prepara y valida los archivos de la aplicacion
+  preparar:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Obtiene el codigo del repositorio
+      - name: Obtener codigo
+        uses: actions/checkout@v6
+
+      # Configura Node.js
+      - name: Configurar Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          package-manager-cache: false
+
+      # Comprueba la sintaxis de JavaScript
+      - name: Verificar JavaScript
+        run: |
+          find js -type f -name "*.js" -exec node --check {} \;
+
+      # Prepara solamente los archivos del sitio web
+      - name: Preparar sitio
+        run: |
+          mkdir -p sitio
+          cp login.html sitio/index.html
+          cp login.html sitio/login.html
+          cp -r css js pages image sitio/
+          test -f sitio/index.html
+
+      # Empaqueta los archivos para GitHub Pages
+      - name: Subir archivos del sitio
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: sitio
+
+  # Publica el sitio despues de la preparacion
+  publicar:
+    needs: preparar
+    runs-on: ubuntu-latest
+
+    permissions:
+      pages: write
+      id-token: write
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      # Publica la aplicacion en GitHub Pages
+      - name: Publicar sitio
+        id: deployment
+        uses: actions/deploy-pages@v4
