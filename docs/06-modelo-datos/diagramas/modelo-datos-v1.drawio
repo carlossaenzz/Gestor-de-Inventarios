@@ -1,0 +1,49 @@
+<mxfile host="app.diagrams.net" agent="ChatGPT">
+  <diagram id="modelo-datos-v1" name="Modelo de datos v1">
+    <mxGraphModel dx="1375" dy="785" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1000" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" parent="1" style="text;html=1;align=center;verticalAlign=middle;fontSize=24;fontStyle=1;fontColor=#1F2937;" value="Modelo de Datos Lógico v1.0 — CRUD Inventario" vertex="1">
+          <mxGeometry height="50" width="1000" x="300" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="usuario" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F8FAFC;strokeColor=#2563EB;strokeWidth=2;fontSize=15;spacing=10;" value="&lt;b&gt;USUARIO&lt;/b&gt;&lt;hr&gt;&lt;div style=&quot;text-align:left&quot;&gt;&lt;b&gt;PK&lt;/b&gt; id : Number&lt;br&gt;nombre : String&lt;br&gt;email : String&lt;br&gt;username : String&lt;br&gt;password : String&lt;br&gt;rol : String&lt;br&gt;fechaRegistro : String&lt;/div&gt;" vertex="1">
+          <mxGeometry height="280" width="330" x="120" y="105" as="geometry" />
+        </mxCell>
+        <mxCell id="sesion" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F8FAFC;strokeColor=#2563EB;strokeWidth=2;fontSize=15;spacing=10;" value="&lt;b&gt;SESIÓN&lt;/b&gt;&lt;hr&gt;&lt;div style=&quot;text-align:left&quot;&gt;usuarioId : Number&lt;br&gt;username : String&lt;br&gt;fechaInicio : String&lt;/div&gt;" vertex="1">
+          <mxGeometry height="190" width="330" x="620" y="150" as="geometry" />
+        </mxCell>
+        <mxCell id="producto" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F8FAFC;strokeColor=#2563EB;strokeWidth=2;fontSize=15;spacing=10;" value="&lt;b&gt;PRODUCTO&lt;/b&gt;&lt;hr&gt;&lt;div style=&quot;text-align:left&quot;&gt;&lt;b&gt;PK&lt;/b&gt; id : Number&lt;br&gt;codigo : String&lt;br&gt;nombre : String&lt;br&gt;categoria : String&lt;br&gt;precio : Number&lt;br&gt;cantidad : Number&lt;br&gt;stockMinimo : Number&lt;br&gt;fechaCreacion : String&lt;br&gt;fechaActualizacion : String | null&lt;/div&gt;" vertex="1">
+          <mxGeometry height="330" width="370" x="1080" y="120" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_user_session" edge="1" parent="1" source="usuario" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;strokeColor=#475569;strokeWidth=2;fontSize=13;labelBackgroundColor=#FFFFFF;" target="sesion" value="inicia&#xa;1 → 0..1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="storage" parent="1" style="swimlane;html=1;rounded=1;horizontal=1;startSize=42;fillColor=#EFF6FF;swimlaneFillColor=#FFFFFF;strokeColor=#64748B;strokeWidth=2;fontSize=16;fontStyle=1;" value="&lt;b&gt;PERSISTENCIA — localStorage&lt;/b&gt;" vertex="1">
+          <mxGeometry height="250" width="1040" x="280" y="560" as="geometry" />
+        </mxCell>
+        <mxCell id="key_users" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#94A3B8;fontSize=14;align=center;verticalAlign=middle;" value="&lt;b&gt;crudInventario_usuarios&lt;/b&gt;&lt;br&gt;Array&amp;lt;Usuario&amp;gt;" vertex="1">
+          <mxGeometry height="95" width="280" x="330" y="640" as="geometry" />
+        </mxCell>
+        <mxCell id="key_session" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#94A3B8;fontSize=14;align=center;verticalAlign=middle;" value="&lt;b&gt;crudInventario_sesion&lt;/b&gt;&lt;br&gt;Sesion" vertex="1">
+          <mxGeometry height="95" width="260" x="660" y="640" as="geometry" />
+        </mxCell>
+        <mxCell id="key_products" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#94A3B8;fontSize=14;align=center;verticalAlign=middle;" value="&lt;b&gt;crudInventario_productos&lt;/b&gt;&lt;br&gt;Array&amp;lt;Producto&amp;gt;" vertex="1">
+          <mxGeometry height="95" width="300" x="970" y="640" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_user_storage" edge="1" parent="1" source="usuario" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;strokeColor=#64748B;dashed=1;fontSize=12;labelBackgroundColor=#FFFFFF;" target="key_users" value="persiste">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_session_storage" edge="1" parent="1" source="sesion" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;strokeColor=#64748B;dashed=1;fontSize=12;labelBackgroundColor=#FFFFFF;" target="key_session" value="persiste">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="edge_product_storage" edge="1" parent="1" source="producto" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=1;strokeColor=#64748B;dashed=1;fontSize=12;labelBackgroundColor=#FFFFFF;" target="key_products" value="persiste">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="note" parent="1" style="text;html=1;align=center;verticalAlign=middle;fontSize=13;fontColor=#475569;fontStyle=2;" value="v1.0: categorías se almacenan como String y todos los usuarios del mismo navegador comparten el mismo inventario local." vertex="1">
+          <mxGeometry height="50" width="920" x="340" y="850" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
