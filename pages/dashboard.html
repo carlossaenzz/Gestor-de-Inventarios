@@ -128,10 +128,11 @@
                     <span class="dashboard__alert-count" id="alertCount">0 Alertas</span>
                 </div>
 
-                <!-- Más adelante JavaScript insertará aqui las alertas -->
+                <!-- TODO = Más adelante JavaScript insertará aqui las alertas -->
                 <div class="dashboard__alert-list" id="lowStockList">
                     <p class="dashboard__empty-message">No hay productos con stock bajo.</p>
                 </div>
+
             </section>
 
             <!-- Catálogo y listado de productos -->
@@ -171,8 +172,7 @@
                         </thead>
 
                         <tbody class="dashboard__table-body" id="productsTableBody">
-                            <!-- Más adelante JavaScript generará aqui las filas de productos -->
-
+                            <!-- JavaScript generará aqui las filas de productos -->
                         </tbody>
 
                     </table>
@@ -200,7 +200,7 @@
 
                 <!-- Grupo de campos del producto  -->
                 <fieldset class="product-modal__fields">
-                   
+
                     <!-- Contenedores de cada label e input -->
                     <!-- Nombre del producto -->
                     <div class="product-modal__field">
@@ -246,22 +246,24 @@
 
                 </fieldset>
 
-                    <!-- Acciones del formulario -->
-                    <div class="product-modal__actions">
-                        <button class="product-modal__button product-modal__button--secondary" id="cancelProductButton"
-                            type="button">
-                            Cancelar
-                        </button>
-                        <button class="product-modal__button product-modal__button--primary"
-                            type="submit">
-                            Guardar producto
-                        </button>
-                    </div>
+                <!-- Acciones del formulario -->
+                <div class="product-modal__actions">
+                    <button class="product-modal__button product-modal__button--secondary" id="cancelProductButton"
+                        type="button">
+                        Cancelar
+                    </button>
+                    <button class="product-modal__button product-modal__button--primary" type="submit">
+                        Guardar producto
+                    </button>
+                </div>
 
             </form>
 
         </dialog>
 
+        <!-- TODO: Agregar modal personalizado para confirmar la eliminación de productos -->
+        <!-- La estructura del modal irá aquí en HTML -->
+         
     </div>
 
     <!-- Scripts de lógica y almacenamiento de la aplicación -->
