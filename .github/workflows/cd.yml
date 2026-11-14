@@ -39,7 +39,7 @@ jobs:
           mkdir -p sitio
           cp login.html sitio/index.html
           cp login.html sitio/login.html
-          cp -r css js pages image sitio/
+          cp -r css js pages assets sitio/
           test -f sitio/index.html
 
       # Empaqueta los archivos para GitHub Pages
