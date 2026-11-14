@@ -29,6 +29,13 @@ if (newProductButton && productModal && productModalClose && cancelProductButton
 // Obtiene el formulario utilizado para registrar productos
 const productForm = document.getElementById("productForm");
 
+// Obtiene el titulo del modal
+const productModalTitle = document.getElementById("productModalTitle");
+
+// Guarda temporalmente el ID del producto que se está editando
+let productoEditandoId = null; // Esta variable funciona como un estado
+
+// Verifica que el formulario exista antes de agregar el evento submit
 if (productForm) {
     // Captura los datos cuando se envía el formulario
     productForm.addEventListener("submit", function (event) {
@@ -52,24 +59,56 @@ if (productForm) {
             document.getElementById("productMinStock").value
         );
 
-        // Crea el objeto que representa al producto
-        const producto = {
-            id: Date.now(),
-            codigo,
-            nombre,
-            categoria,
-            precio,
-            cantidad,
-            stockMinimo,
-            fechaCreacion: new Date().toISOString(),
-            fechaActualizacion: new Date().toISOString()
-        };
-
         // Obtiene los productos almacenados
         const productos = obtenerProductos();
 
-        // Agrega el nuevo producto al arreglo
-        productos.push(producto);
+        // Verifica si el formulario está editando un producto existente
+        // EDITAR producto existente
+        if (productoEditandoId !== null) {
+
+            // Busca la posición del producto dentro del arreglo
+            const productoIndex = productos.findIndex(function (producto) {
+                return producto.id === productoEditandoId;
+            });
+
+            // Actualiza el producto
+            if (productoIndex !== -1) {
+
+                productos[productoIndex] = {
+
+                    // Esto se llama spread operator
+                    // Copia las propiedades que ya tenía el producto
+                    ...productos[productoIndex],
+                    codigo,
+                    nombre,
+                    categoria,
+                    precio,
+                    cantidad,
+                    stockMinimo,
+                    fechaActualizacion: new Date().toDateString()
+                };
+            }
+
+        } else {
+
+            // Crea el objeto que representa al producto
+            // CREAR producto nuevo
+            const producto = {
+                id: Date.now(),
+                codigo,
+                nombre,
+                categoria,
+                precio,
+                cantidad,
+                stockMinimo,
+                fechaCreacion: new Date().toISOString(),
+                fechaActualizacion: new Date().toISOString()
+            };
+
+            // Agrega el producto al inicio del arreglo para mostrar primero los productos registrados más recientemente
+            productos.unshift(producto);
+
+        }
 
         // Guarda el arreglo completo
         guardarProductos(productos);
@@ -79,6 +118,12 @@ if (productForm) {
 
         // Limpia el formulario después de registro
         productForm.reset()
+
+        // Restablece el estado de edición
+        productoEditandoId = null;
+
+        // Devuelve el título del modal a su estado inicial
+        productModalTitle.textContent = "Nuevo producto";
 
         // Cierra el modal despuesde guardar
         productModal.close();
@@ -122,6 +167,49 @@ function mostrarProductos() {
 // muestra los productos que ya estaban guardados cuando abres o recargas la página
 mostrarProductos();
 
+// --------------------
+// Edición de productos
+// --------------------
+// Carga en el formulario los datos del producto seleccionado
+function cargarProductoParaEditar(productId) {
+
+    // Obtiene loo productos almacenados
+    const productos = obtenerProductos();
+
+    // Busca el producto que tenga el ID seleccionado
+    const productoEncontrado = productos.find(function (producto) {
+        return producto.id === productId;
+    });
+
+    // Detiene la función si el producto no existe
+    if (!productoEncontrado) {
+        return;
+    }
+
+    // Guarda el ID para saber que el formulario está en modo edición
+    productoEditandoId = productoEncontrado.id;
+
+    // Carga los datos actuales del producto en los campos del formulario
+    document.getElementById("productName").value = productoEncontrado.nombre;
+
+    document.getElementById("productCode").value = productoEncontrado.codigo;
+
+    document.getElementById("productCategory").value = productoEncontrado.categoria;
+
+    document.getElementById("productPrice").value = productoEncontrado.precio;
+
+    document.getElementById("productQuantity").value = productoEncontrado.cantidad;
+
+    document.getElementById("productMinStock").value = productoEncontrado.stockMinimo;
+
+    // Cambia el título para indicar que se está editando un producto
+    productModalTitle.textContent = "Editar producto";
+
+    // Abre el mismo modal utilizado para registrar productos
+    productModal.showModal();
+
+}
+
 // ------------------------
 // Eliminación de productos
 // ------------------------
@@ -143,8 +231,21 @@ function eliminarProducto(productId) {
     mostrarProductos();
 }
 
+// -------------------
+// Eventos de la tabla
+// -------------------
 // Datecta los clics realizados dentro de la tabla de productos
 productsTableBody.addEventListener("click", function (event) {
+
+    // Verifica si el elemento pulsado es un botón de editar
+    if (event.target.classList.contains("dashboard__action-button--edit")) {
+
+        // Obtiene el ID del producto seleccionado
+        const productId = Number(event.target.dataset.productId);
+
+        // Carga los datos del producto en el formulario
+        cargarProductoParaEditar(productId);
+    }
 
     // Verifica si el elemento pulsado es un botón de eliminar
     if (event.target.classList.contains("dashboard__action-button--delete")) {
