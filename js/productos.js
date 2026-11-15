@@ -46,7 +46,8 @@ if (productForm) {
         const codigo = document.getElementById("productCode").value.trim();
         const categoria = document.getElementById("productCategory").value.trim();
 
-        // Convierte los valores numéricos por que los inputs devuelven texto
+        // TODO: Formatear el precio con separadores de miles en el formulario y mantener el valor numérico correcto para cálculos y localStorage.
+        // Convierte los valores numéricos por que los inputs de vuelven texto
         const precio = Number(
             document.getElementById("productPrice").value
         );
@@ -145,6 +146,9 @@ function mostrarProductos() {
 
     // Recorre cada producto almacenado
     productos.forEach(function (producto) {
+
+        // TODO: Mostrar el precio con separadores de miles en la tabla.
+        // const precioFormateado = new Intl.NumberFormat("es-CO").format(producto.precio);
 
         // Crea dinámicamente una fila <tr> por cada producto almacenado.
         // Las filas no se escriben directamente en el HTML porque no se sabe de antemano
