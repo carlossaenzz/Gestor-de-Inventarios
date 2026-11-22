@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <!-- MetaDatos -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/login.css">
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="image/logo/favicon2.png" type="image/x-icon">
+    <!-- Boxicons es una biblioteca de íconos gratuitos y personalizables diseñada para proyectos web. -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <!-- Título -->
+    <title>Gestor De Inventario | Iniciar Sesion</title>
+</head>
+
+<body>
+
+    <!-- Contenedor principal -->
+    <main class="login__container">
+
+        <!-- Sección informativa del sistema -->
+        <section class="login__info">
+
+            <div class="login__badge">
+                <i class="bx bx-shield-quarter login__badge-icon" aria-hidden="true"></i>
+                <span class="login__badge-text">Acceso seguro al sistema</span>
+            </div>
+            
+            <!-- <div class="login__hero-icon">
+                <i class="bx bx-package" aria-hidden="true"></i>
+            </div> -->
+            
+            <h1 class="login__brand">Gestor de Inventarios</h1>
+
+            <p class="login__description">
+                Organiza tus productos, controla tus existencias
+                y administra tu inventario desde un solo lugar.
+            </p>
+
+            <ul class="login__features">
+
+                <li class="login__feature">
+                    <i class="bx bx-check-circle login__feature-icon" aria-hidden="true"></i>
+                    <span>Control de stock de forma rápida</span>
+                </li>
+
+                <li class="login__feature">
+                    <i class="bx bx-check-circle login__feature-icon" aria-hidden="true"></i>
+                    <span>Consulta y gestión de productos</span>
+                </li>
+
+                <li class="login__feature">
+                    <i class="bx bx-check-circle login__feature-icon" aria-hidden="true"></i>
+                    <span>Acceso simple y organizado</span>
+                </li>
+                
+            </ul>
+
+        </section>
+
+        <!-- Sección inicio de sesión -->
+        <section class="login__content">
+
+            <form class="login__form" id="loginForm">
+
+                <div class="login__header">
+                    <h2 class="login__title">Iniciar Sesion</h2>
+                    <p class="login__subtitle">Ingresa tus datos para acceder al sistema</p>
+                </div>
+
+                <!-- Campo de usuario -->
+                <div class="login__field">
+
+                    <label class="login__label">
+                        <input class="login__input" type="text" id="usuario" name="usuario" placeholder="Usuario" autocomplete="username" required aria-label="Usuario">
+                        <i class="bx bx-user login__icon" aria-hidden="true"></i>
+                    </label>
+
+                </div>
+
+                <!-- Campo de contraseña -->
+                <div class="login__field">
+
+                    <label class="login__label">
+                        <input class="login__input" type="password" id="password" name="password" placeholder="Contraseña" autocomplete="current-password" required aria-label="Contraseña">
+                        <i class="bx bx-lock-alt login__icon" aria-hidden="true"></i>
+                    </label>
+
+                </div>
+
+                <!-- Botón inicio de sesion -->
+                <button class="login__button" type="submit">Entrar</button>
+
+                <!-- Enlace de registro-->
+                <p class="login__link">
+                    ¿No tienes una cuenta?<a href="registro.html" aria-label="registrarse"> Regístrate</a>
+                </p>
+
+            </form>
+
+        </section>
+
+    </main>
+
+    <!-- Scripts de lógica y almacenamiento de la aplicación -->
+    <script src="js/login.js"></script>
+    <script src="js/storage.js"></script>
+
+</body>
+
+</html>
