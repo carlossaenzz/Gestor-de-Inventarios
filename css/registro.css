@@ -8,6 +8,7 @@
 body {
     margin: 0;
     font-family: 'Raleway', sans-serif;
+    color: #1f2937;
 }
 
 /* contenedor principal */
@@ -16,7 +17,8 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: linear-gradient(to bottom right, #3498db, #8e44ad);
+    min-height: 100dvh; /*permite utilizar la altura visible del navegador móvil de forma más precisa  */
+    background: linear-gradient(135deg, #0f172a 0%, #1d4ed8 100%);
     padding: 24px 16px;
 }
 
@@ -24,110 +26,126 @@ body {
 .register__form {
     width: 100%;
     height: auto;
-    max-width: 400px;
-    padding: 30px;
-    background: rgba(255, 255, 255, 0.8);
-    border-radius: 10px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    max-width: 430px;
+    padding: 36px;
+    background-color: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 20px;
+    box-shadow: 0px 20px 45px rgba(15, 23, 42, 0.18);
 }
 
 /* título del formulario */
 .register__title {
     text-align: center;
-    color: #333;
-    margin-bottom: 20px;
-    font-size: 24px;
-    font-weight: bold;
-    margin-top: 0;
+    color: #111827;
+    font-size: 2rem;
+    font-weight: 800;
+    margin: 0 0 28px;
 }
 
 /* campos del formulario */
 .register__field {
-    margin-bottom: 20px;
+    margin-bottom: 18px;
 }
 
 /* etiquetas de los campos */
 .register__label {
     display:block;
-    margin-bottom: 7px;
+    margin-bottom: 8px;
     font-weight: 600;
-    color: #333;
+    color: #334155;
     font-size: 14px;
 }
 
-/*contenedor input y icono */
+/* Contenedor del input y su icono */
 .register__control {
     display: flex;
     align-items: center;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 6px 12px;
-    background-color: #f9f9f9;
-    gap: 10px;
+    gap: 12px;
+    padding: 8px 14px;
+    background-color: #f8fafc;
+    border: 1px solid #dbe2ea;
+    border-radius: 12px;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
 }
 
-/* estado cuando el usuario interactúa con el campo */
+/* Resaltar el campo seleccionado */
 .register__control:focus-within {
-    border-color: #3498db;
+    border-color: #2563eb;
+    background-color: #fff;
+    /* box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.10); */
 }
 
-/* estilos del input */
+/* estilos de los input */
 .register__input {
     flex: 1;
     border: none;
     outline: none;
-    padding: 8px 0;
+    padding: 10px 0;
     min-width: 0; /* Evita que el input se desborde del contenedor */
     font-family: inherit;
     font-size: 16px;
     background-color: transparent;
-    color: #333;
+    color: #111827;
 }
 
 /*placeholder del input */
 .register__input::placeholder {
-    color: #999;
+    color: #94a3b8;
 
 }
 
-/* estilos del icono */
+/* Iconos de los campos*/
 .register__icon {
     font-size: 20px;
-    color: #aaa;
-    flex-shrink: 0; /* Evita que el icono se reduzca de tamaño */
-    margin-left: 5px; /* Espacio entre el icono y el borde del input */
+    color: #64748b;
+    flex-shrink: 0; /* Evita que el icono se reduzca de tamaño */  
 }
 
-/* botón de registro */
+/* Botón de registro */
 .register__button {
     width: 100%;
-    padding: 10px;
-    background-color: #3498db;
-    color: white;
+    padding: 14px 18px;
+    margin-top: 8px;
+    background: linear-gradient(135deg, #2563eb 0%, #0ea5e9 100%);
+    color: #fff;
     border: none;
-    border-radius: 5px;
+    border-radius: 12px;
     font-size: 16px;
     cursor: pointer;
     transition: background-color 0.2s ease;
     font-family: inherit; /* Mantener la fuente consistente */
-    font-weight: 600;
+    font-weight: 700;
     cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }   
 
+/* Efecto al pasar el mouse */
 .register__button:hover {
-    background-color: #35759f;
-}   
+    transform: translateY(-1px);
+    box-shadow: 0 12px 24px rgba(37, 99, 235, 0.22);
+}
 
-/* enlace de inicio de sesión */
+/* Accesibilidad al navegar con teclado */
+.register__button:focus-visible,
+.register__link a:focus-visible {
+    outline: 3px solid #93c5fd;
+    outline-offset: 3px;
+}
+
+/* Enlace de inicio de sesión */
 .register__link {
     text-align: center;
-    margin-top: 15px;
-    font-size: 14px;
-    color: #333;
+    margin: 20px 0 0;
+    text-align: center;
+    font-size: 0.95rem;
+    color: #4b5563;
+    line-height: 1.5;
 }
 
 .register__link a {
-    color: #3498db;
+    color: #2563eb;
+    font-weight: 700;
     text-decoration: none;  
 }
 
@@ -135,21 +153,64 @@ body {
     text-decoration: underline;
 }
 
-/*! Adaptación para pantallas pequeñas */
+/* Adaptación para pantallas pequeñas */
 @media (max-width: 680px) {
+
+    .register__container {
+        padding: 16px;
+    }
+
     .register__form {
+        max-width: 430px;
         padding: 24px 20px;
+        border-radius: 16px;
     }
 
     .register__title {
-        font-size: 23px;
+        font-size: 1.7rem;
+        margin-bottom: 20px;
+    }
+
+    .register__field {
+        margin-bottom: 14px;
+    }
+
+    .register__label {
+        margin-bottom: 6px;
+    }
+
+    .register__control {
+        padding: 6px 12px;
+    }
+
+    .register__button {
+        margin-top: 4px;
+    }
+
+    .register__link {
+        margin-top: 16px;
     }
 }
 
+/* Ajustes para pantallas de poca altura */
+@media (max-height: 700px) {
 
+    .register__container {
+        padding-top: 12px;
+        padding-bottom: 12px;
+    }
 
+    .register__form {
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
 
+    .register__title {
+        margin-bottom: 16px;
+    }
 
-
-
-
+    .register__field {
+        margin-bottom: 12px;
+    }
+}
+/* TODO: Incorporar mejoras visuales adicionales en una versión futura del sistema. */
