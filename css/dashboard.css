@@ -17,20 +17,26 @@ body {
     color: #333;
 }
 
+/* Contenedor principal del dashboard */
 .dashboard__container {
-    min-height: 100vh;
     display: flex; /* Organiza el sidebar y el contenido principal horizontalmente */
+    height: 100vh;
+    height: 100dvh;
+    overflow: hidden;
+
 }
 
 /* Barra lateral */
 .dashboard__sidebar {
     width: 240px;
-    min-height: 100vh;
+    height: 100%;
+    flex-shrink: 0;
     padding: 24px 18px;
     display: flex;
     flex-direction: column;
-    background-color: #1f2937;
+    background: linear-gradient(180deg, #0f172a 0%, #1e3a8a 100%);
     color: #fff;
+    overflow-y: auto;
 }
 
 /* Identidad del sistema */
@@ -47,9 +53,9 @@ body {
     align-items: center;
     width: 42px;
     height: 42px;
-    border-radius: 8px;
-    background-color: #3498db;
-    font-size: 12px;
+    border-radius: 10px;
+    color: #3498db;
+    font-size: 40px;
     font-weight: 700;
 }
 
@@ -81,13 +87,13 @@ body {
 }
 
 .dashboard__nav-link:hover {
-    background-color: #35759f;
+    background-color: rgba(255, 255, 255, 0.12);
     color: #fff;
 }
 
 /* Modificador BEM para el enlace activo */
 .dashboard__nav-link--active {
-    background-color: #3498db;
+    background-color: #2563eb;
     color: #fff;
 }
 
@@ -102,11 +108,11 @@ body {
 }
 
 .dashboard__user-icon {
-    font-size: 38px;
+    font-size: 35px;
 }
 
 .dashboard__user-info {
-    display: contents;
+    display: flex;
     flex-direction: column;
 }
 
@@ -147,7 +153,18 @@ body {
 .dashboard__main {
     flex: 1;
     min-width: 0;
+    min-height: 0;
+    height: 100%;
     padding: 22px 55px;
+    overflow-y: auto;
+    background-color: #f8fafc;
+}
+
+/* Espacio al navegar entre las secciones del dashboard */
+.dashboard__summary,
+.dashboard__alerts,
+.dashboard__catalog {
+    scroll-margin-top: 24px;
 }
 
 /* Encabezado del dashboard */
@@ -162,7 +179,7 @@ body {
 /* Texto secundario utilizado en varias secciones */
 .dashboard__subtitle {
     margin: 0 0 7px;
-    color: #3498db;
+    color: #2563eb;
     font-size: 14px;
     font-weight: 700;
 }
@@ -191,17 +208,17 @@ body {
     display: flex;
     align-items: center;
     gap: 8px;
-    padding: 11px 16px;
+    padding: 12px 18px;
     margin-top: 26px;
     border: none;
-    border-radius: 7px;
-    background-color: #3498db;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #2563eb 0%, #0ea5e9 100%);
     color: #fff;
     font-family: inherit;
     font-size: 14px;
-    font-weight: 600;
+    font-weight: 700;
     cursor: pointer;
-    transition: background-color 0.2s ease;
+    transition: transform 0.2s ease, box-shadow 0 2s ease;
 }
 
 .dashboard__new-product i {
@@ -209,7 +226,8 @@ body {
 }
 
 .dashboard__new-product:hover {
-    background-color: #35759f;
+    transform: translateY(-1px);
+    box-shadow: 0 12px 24px rgba(37, 99, 235, 0.22);
 }
 
 /* Resumen del inventario */
@@ -564,12 +582,13 @@ body {
 
 /* Variante principal: guardar producto */
 .product-modal__button--primary {
-    background-color: #3498db;
+    background: linear-gradient(135deg, #2563eb 0%, #0ea5e9 100%);
     color: #fff;
 }
 
 .product-modal__button--primary:hover {
-    background-color: #35759f;
+    /* para que no exista un cambio de color brusco al pasar el cursor */
+    box-shadow: 0 6px 16px rgba(37, 99, 235, 0.20);
 }
 
 /* Diseño Responsive */
