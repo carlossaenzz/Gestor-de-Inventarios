@@ -42,7 +42,7 @@ if (loginForm) {
         console.log("Inicio de sesión exitoso. Bienvenido, " + usuarioEncontrado.nombre + "!");
 
         // Redirige al dashboard después de inicar sesión
-        window.location.href = "./pages/dashboard.html";
+        window.location.href = "dashboard.html";
 
     });
 }
@@ -61,7 +61,7 @@ if (logoutButton) {
         eliminarSesion();
 
         // Redirige al usuario al inicio de sesión
-        window.location.href = "../login.html";
+        window.location.href = "login.html";
     });
 }
 
