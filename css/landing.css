@@ -1,0 +1,363 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700;800&display=swap');
+
+/* Configuración global */
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: 'Raleway', sans-serif;
+    color: #1f2937;
+    background-color: #f8fafc;
+}
+
+/* Encabezado principal */
+.landing__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+    padding: 20px 6%;
+    background-color: #ffffff;
+    border-bottom: 1px solid #e5e7eb;
+    cursor: default;
+}
+
+/* Nombre e icono del sistema */
+.landing__brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: #1f2937;
+    font-size: 1.1rem;
+    font-weight: 800;
+    text-decoration: none;
+}
+
+.landing__brand i {
+    color: #3498db;
+    font-size: 1.8rem;
+}
+
+/* Navegación */
+.landing__nav {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+}
+
+.landing__nav-link {
+    color: #475569;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.landing__nav-link:hover {
+    color: #2563eb;
+}
+
+/* Botón del encabezado */
+.landing__nav-button {
+    display: inline-block;
+    padding: 12px 20px;
+    background-color: #3498db;
+    color: #ffffff;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: background-color 0.2s ease;
+}
+
+.landing__nav-button:hover {
+    background-color: #287db4;
+}
+
+/* Sección principal Hero */
+.landing__hero {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 540px;
+    padding: 90px 6%;
+    overflow: hidden;
+    background: linear-gradient(135deg, #0f172a 0%, #1d4ed8 100%);
+    color: #ffffff;
+}
+
+/* Círculo decorativo superior derecho */
+.landing__hero::before {
+    content: "";
+    position: absolute;
+    width: 320px;
+    height: 320px;
+    top: -80px;
+    right: -80px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.08);
+    pointer-events: none;
+}
+
+/* Círculo decorativo inferior izquierdo */
+.landing__hero::after {
+    content: "";
+    position: absolute;
+    width: 220px;
+    height: 220px;
+    bottom: -60px;
+    left: -60px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.06);
+    pointer-events: none;
+}
+
+/* Contenido principal del Hero */
+.landing__hero-content {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 850px;
+    text-align: center;
+    cursor: default;
+}
+
+/* Título principal */
+.landing__title {
+    margin: 0 0 24px;
+    font-size: clamp(2.2rem, 5vw, 4rem);
+    font-weight: 800;
+    line-height: 1.15;
+}
+
+/* Descripción del sistema */
+.landing__description {
+    max-width: 650px;
+    margin: 0 auto 32px;
+    color: #dbeafe;
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+/* Contenedor de botones */
+.landing__actions {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+/* Estilos generales de los botones */
+.landing__button {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 48px;
+    padding: 14px 24px;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+/* Botón principal */
+.landing__button--primary {
+    background-color: #3498db;
+    color: #ffffff;
+}
+
+.landing__button--primary:hover {
+    background-color: #287db4;
+    transform: translateY(-2px);
+}
+
+/* Botón secundario */
+.landing__button--secondary {
+    border: 1px solid #bfdbfe;
+    color: #ffffff;
+    background-color: transparent;
+}
+
+.landing__button--secondary:hover {
+    background-color: rgba(255, 255, 255, 0.12);
+}
+
+/* Sección de funcionalidades */
+.landing__features {
+    padding: 80px 6%;
+    background-color: #f8fafc;
+    scroll-margin-top: 24px;
+}
+
+/* Título de sección */
+.landing__section-title {
+    margin: 0 0 40px;
+    text-align: center;
+    font-size: clamp(1.7rem, 3vw, 2.3rem);
+    font-weight: 800;
+    color: #1f2937;
+}
+
+/* Cuadrícula de tarjetas */
+.landing__features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+    max-width: 1150px;
+    margin: 0 auto;
+}
+
+/* Tarjeta individual */
+.landing__card {
+    padding: 32px;
+    background-color: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 16px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+/* Icono de la tarjeta */
+.landing__card-icon {
+    display: inline-block;
+    margin-bottom: 20px;
+    color: #3498db;
+    font-size: 2.5rem;
+}
+
+/* Título de la tarjeta */
+.landing__card-title {
+    margin: 0 0 12px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #1f2937;
+}
+
+/* Descripción de la tarjeta */
+.landing__card-description {
+    margin: 0;
+    color: #64748b;
+    font-size: 0.95rem;
+    line-height: 1.7;
+}
+
+/* Pie de página */
+.landing__footer {
+    padding: 24px 6%;
+    text-align: center;
+    background-color: #0f172a;
+    color: #cbd5e1;
+}
+
+.landing__footer p {
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+/* Accesibilidad al navegar con teclado */
+.landing__brand:focus-visible,
+.landing__nav a:focus-visible,
+.landing__button:focus-visible {
+    outline: 3px solid #93c5fd;
+    outline-offset: 4px;
+}
+
+/* Adaptación para tabletas */
+@media (max-width: 900px) {
+
+    .landing__features-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .landing__hero {
+        min-height: 480px;
+        padding: 80px 6%;
+    }
+}
+
+/* Adaptación para celulares */
+@media (max-width: 600px) {
+
+    .landing__header {
+        padding: 16px 5%;
+        gap: 12px;
+    }
+
+    .landing__brand {
+        font-size: 0.9rem;
+    }
+
+    .landing__brand i {
+        font-size: 1.5rem;
+    }
+
+    .landing__nav {
+        gap: 12px;
+    }
+
+    .landing__nav-link {
+        display: none;
+    }
+
+    .landing__nav-button {
+        padding: 10px 12px;
+        font-size: 0.8rem;
+        white-space: nowrap;
+    }
+
+    .landing__hero {
+        min-height: 480px;
+        padding: 70px 24px;
+    }
+
+    .landing__title {
+        font-size: clamp(2rem, 8vw, 2.8rem);
+    }
+
+    .landing__description {
+        font-size: 1rem;
+        line-height: 1.6;
+    }
+
+    .landing__actions {
+        flex-direction: column;
+    }
+
+    .landing__button {
+        width: 100%;
+    }
+
+    .landing__features {
+        padding: 60px 20px;
+    }
+
+    .landing__features-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .landing__card {
+        padding: 26px;
+    }
+
+    /* Reducir los círculos en celulares */
+    .landing__hero::before {
+        width: 200px;
+        height: 200px;
+        top: -70px;
+        right: -90px;
+    }
+
+    .landing__hero::after {
+        width: 150px;
+        height: 150px;
+        bottom: -60px;
+        left: -70px;
+    }
+}
