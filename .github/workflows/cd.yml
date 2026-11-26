@@ -37,10 +37,12 @@ jobs:
       - name: Preparar sitio
         run: |
           mkdir -p sitio
-          cp login.html sitio/index.html
-          cp login.html sitio/login.html
+          cp index.html sitio/
           cp -r css js pages assets sitio/
           test -f sitio/index.html
+          test -f sitio/pages/login.html
+          test -f sitio/pages/registro.html
+          test -f sitio/pages/dashboard.html
 
       # Empaqueta los archivos para GitHub Pages
       - name: Subir archivos del sitio
